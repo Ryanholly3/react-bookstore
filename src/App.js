@@ -10,10 +10,9 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      books: [],
+      books: []
     }
   }
-
 
   async componentDidMount() {
     const response = await fetch('http://localhost:8082/api/books');
@@ -21,13 +20,19 @@ class App extends React.Component {
     this.setState({ books: json });
   }
 
+  titleFilter = (item) => {
+    this.setState({
+      books: item
+    })
+  }
+
+
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <Header />
           <div className="row">
-            <BookList books={ this.state.books }/>
+            <BookList books={ this.state.books } titles={ this.titleFilter }/>
             <BookCart />
           </div>
         <Footer />
