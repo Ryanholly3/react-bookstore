@@ -8,6 +8,16 @@
   align-items: center;
 }
 
+.book-cart {
+  border: solid 2px black;
+}
+
+.book-cart-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .in-line {
   display: inline;
   padding: 0;
@@ -15,4 +25,9 @@
 
 .search {
   width: 250px;
+}
+
+.totals {
+  font-size: 18px;
+  font-weight: bold;
 }

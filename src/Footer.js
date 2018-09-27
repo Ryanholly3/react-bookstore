@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Footer = () => {
   return (
     <nav className="navbar navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">&copy; 2018</a>
+      <a className="navbar-brand" href="">&copy; 2018</a>
     </nav>
   )
 }

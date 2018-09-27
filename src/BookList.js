@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Book from './Book'
-import App from './App'
 import './App.css';
 
 
@@ -10,7 +9,6 @@ class BookList extends React.Component {
     this.state = {
       search: ''
     }
-    this.titleSearch = this.titleSearch.bind(this);
   }
 
   changeSearch = (e) => {
@@ -40,21 +38,22 @@ class BookList extends React.Component {
     this.props.titles(listConstruct)
   }
 
-
   renderList(){
-    return this.props.books.map((book, i) => <Book key={ i } bookTitle={ book.title } author={ book.author } bookPrice={ book.price }/>);
+    return this.props.books.map((book, i) => <Book key={ i } books={ this.props.books } addCart={ this.props.addCart } bookTitle={ book.title } author={ book.author } bookPrice={ book.price } addTotal={ this.props.addToTotal }/>);
   }
 
   render() {
     return (
       <div className="book-list col-md-8">
-        <div className="col-md-12 title-box">
-          <h1 className="in-line">Book Directory</h1>
-          <form>
-            <input className="search" type="text" placeholder="search for a book.." onChange={ this.changeSearch }/>
-            <input type="submit" value="Search Title" onClick={ this.titleSearch }/>
-            <input type="submit" value="Search Author" onClick={ this.authorSearch }/>
-          </form>
+        <div className="row">
+          <div className="col-md-12 title-box">
+            <h1 className="in-line">Book Directory</h1>
+            <form>
+              <input className="search" type="text" placeholder="search for a book.." onChange={ this.changeSearch }/>
+              <input type="submit" value="By Title" onClick={ this.titleSearch }/>
+              <input type="submit" value="By Author" onClick={ this.authorSearch }/>
+            </form>
+          </div>
         </div>
         <div className="list-group-item">
           <div className="row">

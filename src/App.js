@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import BookCart from './BookCart';
 import BookList from './BookList';
-import Book from './Book';
 import './App.css';
 
 class App extends React.Component {
@@ -11,7 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       books: [],
-      allBooks: []
+      allBooks: [],
+      cart: [],
     }
   }
 
@@ -30,14 +30,32 @@ class App extends React.Component {
     })
   }
 
+  addToCart = (item) =>{
+    this.setState({
+      cart: this.state.cart.concat(item)
+    })
+  }
+
+  deleteCartItem = (item) => {
+    for(var i = 0; i < this.state.cart.length; i++) {
+      if (this.state.cart[i].title === item){
+        var indexDelete = i;
+      }
+    }
+    var newCart = this.state.cart;
+    newCart.splice(indexDelete, 1)
+    this.setState({
+      cart: newCart
+    })
+  }
 
   render() {
     return (
       <div className="App">
         <Header />
           <div className="row">
-            <BookList books={ this.state.books } allBooks={ this.state.allBooks } titles={ this.titleFilter }/>
-            <BookCart />
+            <BookList books={ this.state.books } allBooks={ this.state.allBooks } titles={ this.titleFilter } addCart={ this.addToCart } cart={ this.state.cart }/>
+            <BookCart allBooks={ this.state.allBooks } cart={ this.state.cart } deleteItem={ this.deleteCartItem }/>
           </div>
         <Footer />
       </div>
