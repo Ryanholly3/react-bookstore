@@ -1,5 +1,13 @@
-.quantity-input {
+.quantity-input, .price-input {
   width: 50px;
+}
+
+.author-input {
+  width: 200px;
+}
+
+.title-input {
+  width: 300px;
 }
 
 .title-box {

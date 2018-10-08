@@ -1,9 +1,13 @@
 import React from 'react';
-import Header from './Header';
 import Footer from './Footer';
 import BookCart from './BookCart';
 import BookList from './BookList';
+import AdminBookList from './AdminBookList';
+import Admin from './Admin';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+
 
 class App extends React.Component {
   constructor(props){
@@ -52,15 +56,28 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header />
-          <div className="row">
-            <BookList books={ this.state.books } allBooks={ this.state.allBooks } titles={ this.titleFilter } addCart={ this.addToCart } cart={ this.state.cart }/>
-            <BookCart allBooks={ this.state.allBooks } cart={ this.state.cart } deleteItem={ this.deleteCartItem }/>
-          </div>
+        <div className="row">
+          <BookList books={ this.state.books } allBooks={ this.state.allBooks } titles={ this.titleFilter } addCart={ this.addToCart } cart={ this.state.cart }/>
+          <BookCart allBooks={ this.state.allBooks } cart={ this.state.cart } deleteItem={ this.deleteCartItem }/>
+        </div>
         <Footer />
       </div>
     );
   }
 }
 
-export default App;
+const RouterEx = () => (
+  <Router>
+    <div>
+      <nav className="navbar navbar-dark bg-primary">
+        <Link to="/" className="navbar-brand">Home</Link>
+        <Link to="/admin" className="navbar-brand">Admin</Link>
+      </nav>
+      <Route exact path="/" component={App}/>
+      <Route exact path="/admin" component={Admin}/>
+    </div>
+  </Router>
+)
+
+
+export default RouterEx;
