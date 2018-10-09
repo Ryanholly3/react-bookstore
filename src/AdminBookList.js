@@ -33,7 +33,6 @@ class AdminBookList extends React.Component {
     this.setState({
       price: e.target.value,
     })
-    console.log(this.state.price)
   }
 
   createBook = (e) => {
@@ -69,7 +68,7 @@ class AdminBookList extends React.Component {
                 <input type="text" className="author-input" placeholder="Add author..." onChange={ this.addAuthor }/>
               </div>
               <div className="col-md-2">
-                $<input type="number" min="0" className="price-input" value={ this.state.price } onChange={ this.addPrice }/>
+                $<input type="number" className="price-input" value={ this.state.price } onChange={ this.addPrice }/>
               </div>
               <div className="col-md-2">
                 <input type="button" value="Add" onClick={ this.createBook }/>

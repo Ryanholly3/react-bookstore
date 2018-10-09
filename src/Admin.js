@@ -18,6 +18,7 @@ class Admin extends React.Component {
   }
 
   async adminBookAdd(item) {
+    console.log("item: ", item)
     const response = await fetch('http://localhost:8082/api/books', {
       method: 'POST',
       body: JSON.stringify(item),
@@ -34,7 +35,6 @@ class Admin extends React.Component {
   }
 
   render(){
-    console.log(this.state.allBooks)
     return (
       <div>
         <h1>Admin</h1>
